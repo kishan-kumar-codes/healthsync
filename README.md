@@ -1,80 +1,66 @@
-# HealthSync ![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![Version](https://img.shields.io/badge/version-1.0.0-blue)
+# HealthSync Web Application
 
-## Project Description
-HealthSync is a web application that aggregates health data from multiple wearable devices, providing users with personalized insights and recommendations. It enables users to share their health information securely with healthcare professionals, facilitating better health management and decision-making.
-
-## Features
-- 📊 Real-time health data integration from various wearable devices
-- 🤖 Personalized health insights and recommendations using AI
-- 🔒 Secure sharing of health data with healthcare providers
+## Overview
+HealthSync is a web application designed to help users manage their health data efficiently. This README provides essential information for launching the application.
 
 ## Tech Stack
-### Frontend
-- **Next.js** 🌐
+- **Backend**: FastAPI
+- **Frontend**: Next.js
+- **Database**: PostgreSQL
+- **AI Integration**: LangChain, OpenAI
 
-### Backend
-- **FastAPI** 🚀
-- **LangChain** 📚
-- **OpenAI** 🤖
-
-### Database
-- **PostgreSQL** 🗄️
+## Prerequisites
+- Python 3.8+
+- Node.js 14+
+- PostgreSQL 12+
+- OpenAI API Key
 
 ## Installation
-To set up the project locally, follow these steps:
 
-- Clone the repository
-bash
-git clone https://github.com/kishan-kumar-codes/healthsync
-- Navigate to the project directory
-bash
-cd healthsync
-- Install the required dependencies
-bash
-pip install -r requirements.txt
-- Set up the PostgreSQL database
-bash
-# Create a new database
-createdb healthsync
+### Backend Setup
+1. Navigate to the backend directory:
+   bash
+   cd backend
+   2. Create a virtual environment and activate it:
+   bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   3. Install dependencies:
+   bash
+   pip install -r requirements.txt
+   4. Set up the database:
+   - Create a PostgreSQL database named `healthsync`.
+   - Update the `DATABASE_URL` in `.env` file:
+     DATABASE_URL=postgresql://username:password@localhost/healthsync
+     5. Run database migrations:
+   bash
+   alembic upgrade head
+   6. Start the FastAPI server:
+   bash
+   uvicorn main:app --reload
+   ### Frontend Setup
+1. Navigate to the frontend directory:
+   bash
+   cd frontend
+   2. Install dependencies:
+   bash
+   npm install
+   3. Start the Next.js development server:
+   bash
+   npm run dev
+   ## Launching the Application
+To officially launch HealthSync, ensure both the backend and frontend servers are running. Access the application at `http://localhost:3000`.
 
-# Run migrations
-alembic upgrade head
-- Start the FastAPI server
-bash
-uvicorn app.main:app --reload
-- Start the Next.js development server
-bash
-npm install
-npm run dev
-## Usage
-Once the application is running, navigate to `http://localhost:3000` in your web browser to access the HealthSync interface. Connect your wearable devices to start aggregating health data and receive personalized insights.
+## Error Handling
+- Ensure proper error handling in both FastAPI and Next.js to manage unexpected issues gracefully.
+- Use try-except blocks in FastAPI routes to catch exceptions and return appropriate HTTP status codes.
 
-## API Documentation
-For detailed API documentation, please refer to the [API Docs](https://github.com/kishan-kumar-codes/healthsync/wiki/API-Documentation).
-
-## Testing
-To run the tests for the application, use the following command:
-bash
-pytest
-## Deployment
-For deploying the application, follow these steps:
-
-- Build the Next.js application
-bash
-npm run build
-- Deploy the FastAPI application using a WSGI server like Gunicorn
-bash
-gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker
-- Ensure your PostgreSQL database is properly configured in the production environment.
+## Best Practices
+- Regularly update dependencies to keep the application secure.
+- Monitor application performance and logs for any issues post-launch.
 
 ## Contributing
-We welcome contributions! Please follow these guidelines:
+Contributions are welcome! Please follow the standard Git workflow for submitting changes.
 
-- Fork the repository
-- Create a new branch for your feature or bug fix
-- Make your changes and commit them
-- Push your branch and create a pull request
-
-For more details, please refer to our [Contributing Guidelines](https://github.com/kishan-kumar-codes/healthsync/blob/main/CONTRIBUTING.md). 
-
-Thank you for your interest in contributing to HealthSync!
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
